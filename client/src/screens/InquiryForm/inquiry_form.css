@@ -1,0 +1,92 @@
+.form-container {
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  padding: 30px;
+  border-radius: 14px;
+  max-width: 750px;
+  margin: 40px auto;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-size: 24px;
+  position: relative;
+}
+
+.form-container h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #6c5ce7;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+.inquiry-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #34495e;
+}
+
+input, select, textarea {
+  padding: 10px 12px;
+  border: 2px solid #e1e5ee;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  background-color: #ffffff;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 8px rgba(108, 92, 231, 0.3);
+  background-color: #fafaff;
+}
+
+textarea {
+  resize: none;
+  min-height: 90px;
+}
+
+.form-actions {
+  grid-column: span 2;
+  text-align: center;
+  margin-top: 25px;
+}
+
+button {
+  background: linear-gradient(135deg, #6c5ce7, #00b894);
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
