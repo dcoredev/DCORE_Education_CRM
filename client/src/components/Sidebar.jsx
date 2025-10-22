@@ -1,66 +1,42 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// const Sidebar = () => {
-//   return (
-//     <div className="sidebar">
-//       <h2>🎓 IT Academy CRM</h2>
-//       <ul>
-//         <li><Link to="/">Dashboard</Link></li>
-//         <li><Link to="/inquiries">Inquiries</Link></li>
-//         <li><Link to="/pipeline">Admissions Pipeline</Link></li>
-//         <li><Link to="/applications">Applications</Link></li>
-//         <li><Link to="/payments">Payments</Link></li>
-//         <li><Link to="/reports">Reports</Link></li>
-//         <li><Link to="/users">Users & Roles</Link></li>
-//         <li><Link to="/settings">Settings</Link></li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Sidebar;
-
+// 📁 src/components/AdminSidebar.jsx
 import React from "react";
-import { NavLink } from "react-router-dom";
-import "../screens/crm.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const Sidebar = () => {
-  // Read role from localStorage
-  const role = localStorage.getItem("role"); // "Admin" or "Student"
+const AdminSidebar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    sessionStorage.clear();
+    navigate("/login");
+  };
 
   return (
     <div className="sidebar">
-      <h2 className="logo">🎓 IT Academy</h2>
+      <style>{`
+        .sidebar { width: 250px; background: #2c3e50; color: #fff; padding: 20px; display: flex; flex-direction: column; height: 100vh; }
+        .logo { margin-bottom: 20px; font-size: 22px; font-weight: bold; }
+        .navLinks { list-style: none; padding: 0; flex: 1; }
+        .navLinks li { margin-bottom: 8px; }
+        .link { display: block; color: #ecf0f1; text-decoration: none; padding: 10px 0; font-size: 16px; transition: color 0.2s ease; }
+        .link:hover, .active { color: #1abc9c; }
+        .logoutBtn { background: #e74c3c; color: #fff; border: none; padding: 10px; border-radius: 6px; cursor: pointer; margin-top: 20px; font-size: 16px; transition: background 0.2s ease; }
+        .logoutBtn:hover { background: #c0392b; }
+      `}</style>
 
-      {role === "Admin" && (
-        <>
-          <h3 className="section-title">Admin CRM</h3>
-          <ul className="nav-links">
-            <li><NavLink to="/" end>📊 Dashboard</NavLink></li>
-            <li><NavLink to="/inquiries">📩 Inquiries</NavLink></li>
-            <li><NavLink to="/pipeline">📈 Admissions Pipeline</NavLink></li>
-            <li><NavLink to="/applications">📝 Applications</NavLink></li>
-            <li><NavLink to="/payments">💰 Payments</NavLink></li>
-            <li><NavLink to="/reports">📑 Reports</NavLink></li>
-            <li><NavLink to="/users">👥 Users & Roles</NavLink></li>
-            <li><NavLink to="/settings">⚙️ Settings</NavLink></li>
-          </ul>
-        </>
-      )}
+      <h2 className="logo">🛠️ Admin Panel</h2>
+      <ul className="navLinks">
+        <li><NavLink to="/Dashboard" className="link">📊 Dashboard</NavLink></li>
+        <li><NavLink to="/admin-inquiries" className="link">📩 Inquiries</NavLink></li>
+        <li><NavLink to="/admin-admissions" className="link">🎓 Admissions</NavLink></li>
+        <li><NavLink to="/admin-payments" className="link">💳 Payments</NavLink></li>
+        <li><NavLink to="/admin-reports" className="link">📑 Reports</NavLink></li>
+        {/* <li><NavLink to="/admin/users" className="link">👥 Users / Roles</NavLink></li> */}
+      </ul>
 
-      {role === "Student" && (
-        <>
-          <h3 className="section-title">Student Portal</h3>
-          <ul className="nav-links">
-            <li><NavLink to="/student/profile">👤 Profile</NavLink></li>
-            <li><NavLink to="/student/application">📝 Apply</NavLink></li>
-            <li><NavLink to="/student/payments">💳 Payments</NavLink></li>
-          </ul>
-        </>
-      )}
+      <button className="logoutBtn" onClick={handleLogout}>🚪 Logout</button>
     </div>
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;
