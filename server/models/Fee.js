@@ -1,32 +1,5 @@
 
 
-// import mongoose from "mongoose";
-// import Payment from "./Payment.js";
-
-// const feeSchema = new mongoose.Schema({
-//   studentId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-//   total: { type: Number, default: 0 },
-//   deposit: { type: Number, default: 0 },
-//   monthly: { type: Number, default: 0 },
-//   final: { type: Number, default: 0 },
-//   notes: { type: String, default: "" },
-//   status: { type: String, enum: ["Pending", "Partial", "Completed"], default: "Pending" },
-// });
-
-// // Update fee status based on payments
-// feeSchema.methods.updateStatus = async function () {
-//   const payments = await Payment.find({ studentId: this.studentId });
-//   const totalPaid = payments.reduce((sum, p) => sum + (p.amount || 0), 0);
-
-//   if (totalPaid === 0) this.status = "Pending";
-//   else if (totalPaid >= this.total) this.status = "Completed";
-//   else this.status = "Partial";
-
-//   await this.save();
-// };
-
-// export default mongoose.model("Fee", feeSchema);
-
 // models/Fee.js
 import mongoose from "mongoose";
 
