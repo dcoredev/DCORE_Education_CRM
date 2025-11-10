@@ -276,3 +276,6 @@ const styles = {
 };
 
 export default StudentProfile;
+
+
+//batch, course details, reg no, fees, 

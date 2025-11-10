@@ -53,14 +53,16 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from "./screens/Auth/Login.jsx";
 import Signup from "./screens/Auth/Signup.jsx";
 import ForgotPassword from "./screens/Auth/ForgotPassword.jsx";
+import LoginOptions from "./screens/Auth/LoginOptions.jsx";
 
 // 🎓 Student Screens
 import StuProfile from "./screens/Student/StuProfile.jsx";
 import StuProfileEdit from "./screens/Student/StuProfileEdit.jsx";
-import ApplicationForm from "./screens/Student/Application_form.jsx";
+// import ApplicationForm from "./screens/Student/Application_form.jsx";
 import StuPayments from "./screens/Student/StuPayments.jsx";
 import Dashboard from "./screens/dashboard/Dashboard.jsx";
 import InquiryForm from "./screens/InquiryForm/inquiry_form.jsx";
+import ApplicationForm from "./screens/Student/Application_form.jsx";
 
 // 🧑‍💼 Admin Screens
 import AdminProfile from "./screens/Admin/AdminProfile.jsx";
@@ -69,6 +71,10 @@ import Users from "./screens/Admin/Users.jsx";
 import AdminAdmissions from "./screens/Admin/AdminAdmissions.jsx";
 import AdminPayments from "./screens/Admin/AdminPayments.jsx";
 import AdminReports from "./screens/Admin/Reports.jsx";
+// import AdminAdmissionForm from "./screens/Admin/AdminAdmissionForm.jsx";
+import AdminAdmissionForm from "./screens/Admin/AdminAdmissionForm.jsx";
+// import AdminAdmissionEdit from "./screens/Admin/AdminAdmissioinEdit.jsx";
+import AdminAdmissionFormEdit from "./screens/Admin/AdminAdmissioinEdit.jsx";
 
 // ✅ Protected Route
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -80,10 +86,11 @@ function App() {
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LoginOptions />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/login-options" element={<LoginOptions />} />
 
         {/* Student Routes */}
         <Route
@@ -110,6 +117,26 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route 
+          path="/admin-admission-form"
+          element={
+            <ProtectedRoute>
+              <AdminAdmissionForm />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route 
+          path="/admin-admission-edit/:id"
+          element={
+            <ProtectedRoute>
+              <AdminAdmissionFormEdit />
+            </ProtectedRoute>
+          }
+        />
+
+
         <Route
           path="/studentpayments"
           element={

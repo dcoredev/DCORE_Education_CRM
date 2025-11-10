@@ -32,6 +32,7 @@ const AdminSidebar = () => {
         <li><NavLink to="/admin-payments" className="link">💳 Payments</NavLink></li>
         <li><NavLink to="/admin-reports" className="link">📑 Reports</NavLink></li>
         {/* <li><NavLink to="/admin/users" className="link">👥 Users / Roles</NavLink></li> */}
+         <li><NavLink to="/admin-admission-form" className="link">📑 Application form</NavLink></li>
       </ul>
 
       <button className="logoutBtn" onClick={handleLogout}>🚪 Logout</button>
