@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const InquirySchema = new mongoose.Schema({
   inquiryDate: { type: Date, required: true },
-  fullName: { type: String, required: true, trim: true },
+  name: { type: String, required: true, trim: true },
   gender: { type: String, enum: ["Male", "Female", "Other"] },
   dob: { type: Date },
   contactNumber: { type: String, required: true, unique: true },

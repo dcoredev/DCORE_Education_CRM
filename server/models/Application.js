@@ -148,6 +148,12 @@ const applicationSchema = new mongoose.Schema(
   {
     // ✅ Student-Generated Fields
     registrationNo: { type: String, required: true, unique: true },
+    status: {
+      type: String,
+      enum: ["Pending", "Approved", "Rejected"],
+      default: "Pending",
+            },
+
     batch: { type: String },
     course: { type: String },
     admissionDate: { type: Date },
@@ -184,6 +190,8 @@ const applicationSchema = new mongoose.Schema(
     programName: { type: String },
     duration: { type: String },
     fees: feeSchema,
+
+    
 
     studentName: { type: String },
     studentSignature: { type: String },
